@@ -2,19 +2,12 @@ import numpy as np
 import cv2
 import time
 
-def reckon(file):
+def reckon():
     """
     Reading input image
 
     """
-
-    # Reading image with OpenCV library
-    # In this way image is opened already as numpy array
-    # WARNING! OpenCV by default reads images in BGR format
-    nparr = np.frombuffer(file, np.uint8)
-    image_BGR = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-
-
+    image_BGR = cv2.imread('images/sample')
     # Showing Original Image
     # Giving name to the window with Original Image
     # And specifying that window is resizable
@@ -62,7 +55,7 @@ def reckon(file):
     # print(os.getcwd())
     # return
 
-    with open(r'/home/arjith/web_dev/proj/Yolo_Object_detection/webui/dj_server/ml_server/app/yolo-coco-data/coco.names') as f:
+    with open(r'/home/arjith/web_dev/proj/yolo-coco-data/coco.names') as f:
         # Getting labels reading every line
         # and putting them into the list
         labels = [line.strip() for line in f]
@@ -72,8 +65,8 @@ def reckon(file):
 
     # Loading trained YOLO v3 Objects Detector
     # with the help of 'dnn' library from OpenCV
-    network = cv2.dnn.readNetFromDarknet('/home/arjith/web_dev/proj/Yolo_Object_detection/webui/dj_server/ml_server/app/yolo-coco-data/yolov3.cfg',
-                                        '/home/arjith/web_dev/proj/Yolo_Object_detection/webui/dj_server/ml_server/app/yolo-coco-data/yolov3.weights')
+    network = cv2.dnn.readNetFromDarknet('/home/arjith/web_dev/proj/yolo-coco-data/yolov3.cfg',
+                                        '/home/arjith/web_dev/proj/yolo-coco-data/yolov3.weights')
 
     # Getting list with names of all layers from YOLO v3 network
     layers_names_all = network.getLayerNames()
@@ -193,7 +186,7 @@ def reckon(file):
         # Going through indexes of results
         for i in results.flatten():
             # Showing labels of the detected objects
-            items.append('Object {0}: {1}'.format(counter, labels[int(class_numbers[i])]))
+            items.append(labels[int(class_numbers[i])])
 
             # Incrementing counter
             counter += 1
@@ -221,20 +214,19 @@ def reckon(file):
                                                 confidences[i])
 
             # Putting text with label and confidence on the original image
-            cv2.putText(image_BGR, text_box_current, (x_min, y_min - 5),
-                        cv2.FONT_HERSHEY_COMPLEX, 0.7, colour_box_current, 2)
+            cv2.putText(image_BGR, text_box_current, (x_min, y_min - 2),
+                        cv2.FONT_HERSHEY_COMPLEX, 2, colour_box_current, 2)
 
 
     # Comparing how many objects where before non-maximum suppression
     # and left after
     det_onj=len(bounding_boxes)
     not_det=counter - 1
-    cv2.imwrite('./reee.jpg', image_BGR)
-    print(image_BGR.shape)
-    return items
+    cv2.imwrite('./output/f.jpg', image_BGR)
+    print(items)
+    
 
-
-
+reckon()
 
 
 

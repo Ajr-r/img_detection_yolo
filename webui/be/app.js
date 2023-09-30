@@ -3,43 +3,36 @@ const axios=require('axios')
 const path=require('path')
 const multer = require('multer');
 const app=exp()
-const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
-const cors=require('cors')
+const { exec } = require('child_process');
+
+const customFilename = (req, file, cb) => {
+  // Set the desired filename here (e.g., 'sample.jpg')
+  const desiredFilename = 'sample.jpg';
+  cb(null, desiredFilename);
+};
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "images");
+  },
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    const originalname ='sample'
+    cb(null, originalname);
+  },
+});
+const upload = multer({ storage });
+const cors=require('cors');
 let cs=''
+app.use('/output', exp.static(path.join(__dirname,'output')));
 app.use(cors())
-const config = {
-    headers: {
-      'x-api-key': 'dknk339fbbb',
-    },
-  };
-  
 app.get('/api/test',(req,res)=>{
     res.send('gg server')
 })
 app.post('/api/django',upload.single('file'),(req,res)=>{
-  const filedata=req.file.buffer
-    axios.get('http://127.0.0.1:8000/token',config)
-    .then((r)=>{
-      cs=r.data.csrfToken
-      console.log(cs)
-       axios.get('http://127.0.0.1:8000/test',{
-        headers: {
-              'x-api-key': 'dknk339fbbb',
-              'X-CSRFToken': cs, 
-            }, 
-       })
-      axios.post('http://127.0.0.1:8000/',filedata,{
-        headers: {
-          'x-api-key': 'dknk339fbbb',
-              'X-CSRFToken': cs, 
-          
-        },
-        
-      })
-      .then((r)=>res.send(r.data))
-      .catch((e)=>console.log(e))
-    })
+  exec('python ml.py',(error,stdout)=>{
+    res.send(stdout)
+  })
+
 })
 app.use(exp.static(path.join(__dirname, '../fe/dist_prod')));
 app.listen(3000,()=>{
