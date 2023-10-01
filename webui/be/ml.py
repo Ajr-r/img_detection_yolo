@@ -207,15 +207,15 @@ def reckon():
             # Drawing bounding box on the original image
             cv2.rectangle(image_BGR, (x_min, y_min),
                         (x_min + box_width, y_min + box_height),
-                        colour_box_current, 2)
+                        colour_box_current, 1)
 
             # Preparing text with label and confidence for current bounding box
             text_box_current = '{}: {:.4f}'.format(labels[int(class_numbers[i])],
                                                 confidences[i])
 
             # Putting text with label and confidence on the original image
-            cv2.putText(image_BGR, text_box_current, (x_min, y_min - 2),
-                        cv2.FONT_HERSHEY_COMPLEX, 2, colour_box_current, 2)
+            cv2.putText(image_BGR, text_box_current, (x_min, y_min - 1),
+                        cv2.FONT_HERSHEY_COMPLEX, 1, colour_box_current, 1)
 
 
     # Comparing how many objects where before non-maximum suppression
