@@ -3,6 +3,7 @@
 ## Overview
 This is a desktop application designed for object identification in images. It utilizes a combination of technologies, including Express, React, Python, and YOLO (You Only Look Once) for machine learning. users can easily upload images, and the application will identify and label objects within the images, providing information about the identified objects.
 
+ai_rec.png
 
 
 ## Features
