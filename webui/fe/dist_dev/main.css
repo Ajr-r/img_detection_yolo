@@ -1,0 +1,126 @@
+/*!************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./main.css ***!
+  \************************************************************/
+@import url(https://fonts.googleapis.com/css?family=Arapey|Cantarell|Comfortaa|Khand|Russo+One|Ubuntu);
+/*!****************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./main.css (1) ***!
+  \****************************************************************/
+.home{
+    margin: 0;
+    height: 100vh;
+    display:flex ;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Comfortaa', cursive;
+    
+    
+    
+}
+*{
+    font-family: 'Comfortaa', cursive;
+
+}
+.images{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1600px;
+    height: 650px;
+    border: 1px solid black;
+    border-radius: 25px;
+
+}
+.sm{
+    width: 750px;
+}
+@keyframes big {
+    0%{
+        width: 750px;
+    }
+    100%{
+        width: 1600px;
+    }
+    
+}
+.lg{
+    animation: big 0.5s;
+}
+@keyframes left {
+    0%{
+        transform: translateX();
+    }
+    100%{
+        transform:translateX(-350px);
+    }
+}
+.left{
+position: fixed;
+}
+.move{
+    animation: left 1s forwards;
+
+}
+@keyframes opa {
+   0%{
+    opacity: 0;
+   } 
+   100%{
+
+    opacity: 100%;
+
+   }
+}
+.opac{
+    animation: opa 1s forwards;
+}
+/* Start Fonts from Google Fonts */
+/*Google Fonts*/
+
+
+
+/*End Fonts*/
+
+.msg{
+  /* position: absolute; */
+  margin-left: 30px;
+  margin-top: -14px;
+  border: 1px solid black;
+  background-color: #D4D4D4;
+
+  border-radius: 0 10px 10px 10px;
+  /* background-color: aqua; */
+  padding: 5px;
+  opacity: 0;
+  transition: opacity 0.5s;
+  
+}
+.re{
+  background-color:#D4D4D4;
+   text-align:center;
+    width: 25px;
+     height: 25px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+       border: 1px solid black;
+        color: #065673;
+        
+        
+}
+.re:hover + .msg {
+  opacity: 1;
+}
+.tooltip{
+  margin-top: 60px;
+}
+@media screen and (max-width:400px){
+  .home{
+    background-color: #065673;
+    width: 100%;
+  
+  }
+  
+}
+
