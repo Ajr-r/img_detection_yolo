@@ -18,7 +18,7 @@ const upload = multer({ storage });
 const cors=require('cors');
 let cs=''
 app.use('/output', exp.static(path.join(__dirname,'output'),{
-  maxAge:'1000',
+  maxAge:'400',
 }));
 app.use(cors())
 app.post('/api/django',upload.single('file'),(req,res)=>{

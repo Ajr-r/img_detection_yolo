@@ -64,14 +64,14 @@ export function Home() {
     }
     return (
         <div className="home">
-            <h1 style={{marginBottom:'60px'}}> Image recogintion</h1>
+            <h1 style={{marginBottom:'60px'}}>Yolo Object Detection</h1>
             {!image&&<img src={pl} alt="" style={{width:'600px',height:'600px',position:'fixed',top:'170px',opacity:'0.6'}}/>}
             <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <div className={opens}>
                     {/* <div style={{height:'600px',width:'700px',margin:'10px',background:'black'}}></div> */}
                     {oimage && <div style={{ height: '600px', width: '700px', margin: '10px' }}></div>}
                     {image && <img style={{ height: '600px', width: '700px', margin: '10px' }} className={left} src={image} alt="" />}
-                    {oimage && <img style={{ height: '600px', width: '700px', margin: '10px' }} className='opac' src={'http://localhost:3000/output/f.jpg'} alt="" />}
+                    {oimage && <img style={{ height: '600px', width: '700px', margin: '10px' }} className='opac' src={`http://localhost:3000/output/f.jpg?time=${new Date().getTime()}`} alt="" />}
 
 
                     {oimage && <div className="tooltip opac" style={{position:'fixed',left:'1640px',top:'155px'}}>
