@@ -29,12 +29,13 @@ This is a desktop application designed for object identification in images. It u
 
 ## Getting Started
 To run locally, follow these steps:
-1. Prerequsites :- Python3, nodejs, yolo. 
-2. Clone the repository to your local machine.
-3. Navigate to the project directory.
-4. Install the necessary dependencies for the backend using 'npm i' inside /webui/be .
-5. Start the Express server using 'node --watch app.js' inside /webui/be, the webui will be available at loacalhost:3000.
-6. To modify the frontend navigate to /webui/fe.
+1. Prerequsites :- Python3, nodejs, yolo https://www.kaggle.com/datasets/valentynsichkar/yolo-coco-data.
+3. Place the yolo-coco-data outside of the root directory since i could not upload it cause of its files size
+3. Clone the repository to your local machine.
+4. Navigate to the project directory.
+5. Install the necessary dependencies for the backend using 'npm i' inside /webui/be .
+6. Start the Express server using 'node --watch app.js' inside /webui/be, the webui will be available at loacalhost:3000.
+7. To modify the frontend navigate to /webui/fe.
 
 ## Project Structure
 - `webui/fe`: Contains the React frontend code.
